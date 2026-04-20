@@ -1,0 +1,55 @@
+{
+  "model": "VotingClassifier(LightGBM + XGBoost, soft voting)",
+  "features": {
+    "CNN (ResNet50)": 2048,
+    "TBT (Trabecular)": 37,
+    "Clinical (no BMD)": 11,
+    "total": 2096
+  },
+  "removed_features": [
+    "SPINE_BMD",
+    "HIP_BMD",
+    "HIPNECK_BMD",
+    "SPINE_TSCORE",
+    "HIP_TSCORE",
+    "HIPNECK_TSCORE"
+  ],
+  "reason": "BMD/T-score features define the labels (WHO criteria) = direct leakage",
+  "cv_results": {
+    "mean_train_accuracy": 1.0,
+    "mean_val_accuracy": 0.6887,
+    "train_val_gap": 0.3113,
+    "mean_auc": 0.8386,
+    "mean_recall_per_class": {
+      "Normal": 0.8374,
+      "Osteopenia": 0.5931,
+      "Osteoporosis": 0.3889
+    }
+  },
+  "test_results": {
+    "accuracy": 0.9375,
+    "recall": {
+      "Normal": 0.9655,
+      "Osteopenia": 0.949,
+      "Osteoporosis": 0.7692
+    },
+    "f1": {
+      "Normal": 0.9697,
+      "Osteopenia": 0.93,
+      "Osteoporosis": 0.8163
+    }
+  },
+  "clinical_features_used": [
+    "HEIGHT",
+    "AGE",
+    "MENOPAUSE_YEAR_CLEAN",
+    "IS_MENOPAUSE",
+    "BIRTH_YEAR",
+    "SPINE_SCANDATE_YEAR",
+    "SPINE_SCANDATE_MONTH",
+    "HIP_SCANDATE_YEAR",
+    "HIP_SCANDATE_MONTH",
+    "HIPNECK_SCANDATE_YEAR",
+    "HIPNECK_SCANDATE_MONTH"
+  ]
+}
